@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Cake</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1b1b2f;
+      color: #ffffff;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+      margin: 0;
+      padding-top: 80px;
+      overflow: hidden;
+      transition: opacity 2s ease;
+    }
+
+    #countdown {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    #cakeImage {
+      width: 250px;
+      image-rendering: pixelated;
+    }
+
+    .ribbon, .star {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .ribbon {
+      width: 40px;
+      height: 40px;
+      background: url('images/ribbon.png') no-repeat center/contain;
+    }
+
+    .star {
+      width: 30px;
+      height: 30px;
+      background: url('images/star.png') no-repeat center/contain;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="countdown">Blow candles in 3...</h2>
+  <img id="cakeImage" src="images/cake_unlit.png" alt="Cake" />
+
+  <script>
+    // Add ribbons and stars
+    function addDecorations() {
+      const body = document.body;
+      for (let i = 0; i < 20; i++) {
+        const ribbon = document.createElement('div');
+        ribbon.classList.add('ribbon');
+        ribbon.style.top = Math.random() * 100 + '%';
+        ribbon.style.left = Math.random() * 100 + '%';
+        body.appendChild(ribbon);
+
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        body.appendChild(star);
+      }
+    }
+
+    window.onload = () => {
+      addDecorations();
+
+      const countdownText = document.getElementById('countdown');
+      const cakeImg = document.getElementById('cakeImage');
+      const unlitCake = 'images/cake-unlit.png';
+      const litCake = 'images/cake-lit.png';
+      let count = 3;
+
+      cakeImg.src = unlitCake;
+
+      function startCountdown() {
+        countdownText.innerText = `Blow candles in ${count}...`;
+
+        const interval = setInterval(() => {
+          count--;
+          if (count > 0) {
+            countdownText.innerText = `Blow candles in ${count}...`;
+          } else {
+            clearInterval(interval);
+            countdownText.innerText = "Whooooosh! 🎉";
+            cakeImg.src = litCake;
+
+            // Wait 3 seconds, fade out, then go to constellation page
+            setTimeout(() => {
+              document.body.style.opacity = "0";
+
+              setTimeout(() => {
+                window.location.href = "constellation.html";
+              }, 2000); // After fade
+            }, 3000); // Show lit cake for 3s
+          }
+        }, 1000);
+      }
+
+      startCountdown();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>You Are The Best!</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('images/final_background_pixel.png') center/cover no-repeat;
+      font-family: 'Press Start 2P', cursive;
+      overflow: hidden;
+      color: white;
+    }
+
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 10px #ffb3ec, 0 0 20px #ffa3ff;
+      animation: pop 1s ease-out, glow 2s infinite alternate;
+    }
+
+    @keyframes pop {
+      0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #ffaaff, 0 0 20px #ffd6ff; }
+      100% { text-shadow: 0 0 20px #fff, 0 0 40px #ffc4ff; }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkle 3s infinite;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+
+    .decor {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: url('images/ribbon.png') center/cover no-repeat;
+      animation: float 6s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(20px); }
+    }
+
+    .exit-button {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      font-size: 12px;
+      font-family: 'Press Start 2P', cursive;
+      background: #ff69b4;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffb3ec, 0 0 20px #ffa3ff;
+      transition: transform 0.2s;
+    }
+
+    .exit-button:hover {
+      transform: translateX(-50%) scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    ✨ YOU ARE THE BEST, NAM 💖<br/>
+    Never forget how magical you are 🌙🌟
+  </div>
+
+  <button class="exit-button" onclick="location.href='index.html'">Exit</button>
+
+  <!-- Sparkles -->
+  <script>
+    for (let i = 0; i < 50; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.top = Math.random() * 100 + "vh";
+      sparkle.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(sparkle);
+    }
+
+    // Randomly placed ribbons
+    for (let i = 0; i < 10; i++) {
+      const ribbon = document.createElement("div");
+      ribbon.className = "decor";
+      ribbon.style.left = Math.random() * 100 + "vw";
+      ribbon.style.top = Math.random() * 100 + "vh";
+      ribbon.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+      document.body.appendChild(ribbon);
+    }
+  
+
+</body>
+</html>

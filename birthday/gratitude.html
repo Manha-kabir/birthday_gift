@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Letter for You</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      background: url('images/soft_pixel_sky.png') center/cover no-repeat;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .letter-box {
+      background: #fff8f0;
+      border: 5px dashed #ffaec9;
+      padding: 30px;
+      width: 70%;
+      max-width: 700px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 200, 230, 0.7);
+      text-align: center;
+      animation: appear 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes appear {
+      to { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: scale(0.95); }
+    }
+
+    .letter-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .next-btn {
+      margin-top: 25px;
+      padding: 10px 20px;
+      font-size: 12px;
+      background: #ffd6f5;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 8px #ffb3d9;
+      transition: background 0.3s;
+    }
+
+    .next-btn:hover {
+      background: #ffbee4;
+    }
+  </style>
+</head>
+<body>
+  <div class="letter-box">
+    <div class="letter-text">
+      Dear Nam,<br><br>
+      You’ve lit up my world like no one else has. ✨<br>
+      From your laughter to your kindness, everything about you is magic.<br><br>
+      Thank you for being born. Thank you for existing.<br>
+      You deserve all the stars, all the joy, and all the love this universe can give. 💖<br><br>
+      Happy Birthday again, my moonlight girl 🌙🎀
+    </div>
+
+    <button class="next-btn" onclick="goToNext()">Next</button>
+  </div>
+
+  <script>
+    function goToNext() {
+      window.location.href = 'final.html'; // Change if final screen filename is different
+    }
+  </script>
+</body>
+</html>
